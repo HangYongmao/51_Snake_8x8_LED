@@ -1,0 +1,211 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        08/29/2007  01:03:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE snake.obj TO snake
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  snake.obj (SNAKE)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  snake (SNAKE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            DATA    0021H     0030H     UNIT         ?DT?SNAKE
+            IDATA   0051H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     011BH     UNIT         ?PR?MAIN?SNAKE
+            CODE    011EH     0051H     UNIT         ?PR?TURNKEY?SNAKE
+            CODE    016FH     0046H     UNIT         ?PR?KNOCK?SNAKE
+            CODE    01B5H     0041H     UNIT         ?PR?_TIMER0?SNAKE
+            CODE    01F6H     0033H     UNIT         ?PR?_MUX?SNAKE
+            CODE    0229H     0017H     UNIT         ?PR?_DELAY?SNAKE
+            CODE    0240H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   snake (SNAKE)
+
+
+SEGMENT                           BIT_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?SNAKE
+
+?PR?MAIN?SNAKE                 -----    -----
+  +--> ?PR?_TIMER0?SNAKE
+  +--> ?PR?KNOCK?SNAKE
+
+?PR?_TIMER0?SNAKE              -----    -----
+  +--> ?PR?_MUX?SNAKE
+  +--> ?PR?TURNKEY?SNAKE
+  +--> ?PR?_DELAY?SNAKE
+
+?PR?KNOCK?SNAKE                0020H.0  0000H.1
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/29/2007  01:03:59  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  snake (SNAKE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SNAKE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:011EH         PUBLIC        turnkey
+  C:016FH         PUBLIC        knock
+  B:00B0H.2       PUBLIC        right
+  D:0021H         PUBLIC        addx
+  D:0022H         PUBLIC        addy
+  C:0003H         PUBLIC        main
+  B:00B0H.4       PUBLIC        left
+  D:0023H         PUBLIC        time
+  C:01B5H         PUBLIC        _timer0
+  B:00B0H.6       PUBLIC        keyenable
+  B:00B0H.1       PUBLIC        down
+  C:01F6H         PUBLIC        _mux
+  D:0024H         PUBLIC        e
+  B:00B0H.3       PUBLIC        up
+  D:0025H         PUBLIC        i
+  D:0026H         PUBLIC        n
+  C:0229H         PUBLIC        _delay
+  D:0027H         PUBLIC        x
+  D:003CH         PUBLIC        y
+  -------         PROC          _DELAY
+  D:0007H         SYMBOL        MS
+  -------         DO            
+  D:0005H         SYMBOL        us
+  D:0006H         SYMBOL        usn
+  -------         ENDDO         
+  C:0229H         LINE#         22
+  C:0229H         LINE#         23
+  C:0229H         LINE#         25
+  C:022CH         LINE#         26
+  C:022CH         LINE#         27
+  C:022EH         LINE#         28
+  C:0231H         LINE#         29
+  C:0231H         LINE#         30
+  C:0233H         LINE#         31
+  C:0239H         LINE#         32
+  C:023AH         LINE#         33
+  C:023CH         LINE#         34
+  C:023DH         LINE#         35
+  C:023FH         LINE#         36
+  -------         ENDPROC       _DELAY
+  -------         PROC          KNOCK
+  -------         DO            
+  B:0020H.0       SYMBOL        k
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/29/2007  01:03:59  PAGE 3
+
+
+  C:016FH         LINE#         40
+  C:016FH         LINE#         41
+  C:016FH         LINE#         42
+  C:0171H         LINE#         43
+  C:0180H         LINE#         44
+  C:01B2H         LINE#         45
+  C:01B4H         LINE#         46
+  -------         ENDPROC       KNOCK
+  -------         PROC          TURNKEY
+  C:011EH         LINE#         50
+  C:011EH         LINE#         51
+  C:011EH         LINE#         52
+  C:0121H         LINE#         53
+  C:0121H         LINE#         54
+  C:0135H         LINE#         55
+  C:0148H         LINE#         56
+  C:015BH         LINE#         57
+  C:016EH         LINE#         70
+  C:016EH         LINE#         71
+  -------         ENDPROC       TURNKEY
+  -------         PROC          _MUX
+  D:0007H         SYMBOL        temp
+  C:01F6H         LINE#         75
+  C:01F6H         LINE#         76
+  C:01F6H         LINE#         77
+  C:01FCH         LINE#         78
+  C:0202H         LINE#         79
+  C:0208H         LINE#         80
+  C:020EH         LINE#         81
+  C:0214H         LINE#         82
+  C:021AH         LINE#         83
+  C:0220H         LINE#         84
+  C:0226H         LINE#         85
+  C:0228H         LINE#         86
+  -------         ENDPROC       _MUX
+  -------         PROC          _TIMER0
+  D:0004H         SYMBOL        k
+  C:01B5H         LINE#         90
+  C:01B7H         LINE#         91
+  C:01BDH         LINE#         92
+  C:01C7H         LINE#         93
+  C:01E3H         LINE#         94
+  C:01E6H         LINE#         95
+  C:01EBH         LINE#         96
+  C:01F1H         LINE#         97
+  C:01F5H         LINE#         98
+  -------         ENDPROC       _TIMER0
+  -------         PROC          MAIN
+  C:0003H         LINE#         102
+  C:0003H         LINE#         103
+  C:0006H         LINE#         104
+  C:0009H         LINE#         105
+  C:000CH         LINE#         106
+  C:000EH         LINE#         107
+  C:0010H         LINE#         108
+  C:0010H         LINE#         109
+  C:0010H         LINE#         110
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/29/2007  01:03:59  PAGE 4
+
+
+  C:0032H         LINE#         111
+  C:0038H         LINE#         112
+  C:003BH         LINE#         113
+  C:0041H         LINE#         114
+  C:0045H         LINE#         115
+  C:0049H         LINE#         117
+  C:0053H         LINE#         118
+  C:0053H         LINE#         119
+  C:0058H         LINE#         120
+  C:0062H         LINE#         121
+  C:00A0H         LINE#         122
+  C:00A2H         LINE#         123
+  C:00A8H         LINE#         124
+  C:00B1H         LINE#         125
+  C:00C2H         LINE#         126
+  C:00D3H         LINE#         127
+  C:00D3H         LINE#         128
+  C:00DBH         LINE#         129
+  C:00E3H         LINE#         130
+  C:00E3H         LINE#         131
+  C:010FH         LINE#         133
+  C:011BH         LINE#         134
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SNAKE
+
+Program Size: data=57.1 xdata=0 code=588
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
